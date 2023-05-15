@@ -1,8 +1,7 @@
 class Category {
-  constructor(id, title, muscleGroup) {
-    this.id = id;
-    this.title = title;
-    this.muscleGroup = muscleGroup;
+  constructor(key, value) {
+    this.key = key;
+    this.value = value;
   }
 }
 

@@ -1,15 +1,21 @@
 import {
   View,
   Text,
+  TextInput,
   ImageBackground,
   StyleSheet,
-  FlatList,
+  SafeAreaView,
 } from "react-native";
-import Button from "../components/UI/Button";
 import BackArrows from "../components/UI/BackArrows";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
+import Button from "../components/UI/Button";
+import { BlackOpsOne_400Regular } from "@expo-google-fonts/black-ops-one";
 
-function MainMenu({ navigation }) {
+function CreateAccount({ navigation }) {
+  const [text, onChangeText] = useState("Useless Text");
+  const [number, onChangeNumber] = useState("");
+
   return (
     <View style={styles.outerContainer}>
       <ImageBackground
@@ -25,22 +31,21 @@ function MainMenu({ navigation }) {
               <Ionicons name="chevron-back-outline" style={styles.backIcons} />
             </View>
           </BackArrows>
-          <View>
-            <Text style={styles.title}>FIT LIST</Text>
-          </View>
         </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>Welcome... James!</Text>
-        </View>
+
+        <SafeAreaView>
+          <Text>Name</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            placeholder="useless placeholder"
+          />
+        </SafeAreaView>
+
         <View style={styles.btnContainer}>
-          <Button onPress={() => navigation.navigate("generate")}>
-            NEW
-          </Button>
-          <Button onPress={() => navigation.navigate("playlist")}>
-            PLAYLISTS
-          </Button>
-          <Button onPress={() => navigation.navigate("history")}>
-            HISTORY
+          <Button onPress={() => navigation.navigate("mainmenu")}>
+            CREATE
           </Button>
         </View>
       </ImageBackground>
@@ -48,7 +53,7 @@ function MainMenu({ navigation }) {
   );
 }
 
-export default MainMenu;
+export default CreateAccount;
 
 const styles = StyleSheet.create({
   outerContainer: {
@@ -96,5 +101,14 @@ const styles = StyleSheet.create({
     padding: 20,
     alignSelf: "flex-start",
     flexDirection: "row",
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    color: 'yellow',
+    fontSize: 30,
+    fontFamily: 'BlackOpsOne_400Regular',
+    padding: 10,
   },
 });

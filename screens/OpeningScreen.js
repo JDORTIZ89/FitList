@@ -16,10 +16,10 @@ function OpeningScreen({ navigation, importedFont }) {
         <View style={styles.btnPosition}>
           <Button
             onPress={() => {
-              navigation.navigate("mainmenu");
+              navigation.navigate("signup");
             }}
           >
-            <Text style={importedFont}>Enter</Text>
+            <Text style={importedFont}>Sign Up!</Text>
           </Button>
         </View>
       </ImageBackground>

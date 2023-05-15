@@ -15,6 +15,7 @@ import {
   useFonts,
   BlackOpsOne_400Regular,
 } from "@expo-google-fonts/black-ops-one";
+import CreateAccount from "./screens/CreateAccount";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="opening" component={OpeningScreen} />
+        <Stack.Screen name="signup" component={CreateAccount} />
         <Stack.Screen name="mainmenu" component={MainMenu} />
         <Stack.Screen name="generate" component={GenerateWorkoutScreen} />
         <Stack.Screen name="playlist" component={PlaylistScreen} />

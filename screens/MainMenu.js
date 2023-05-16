@@ -1,9 +1,7 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 
 function MainMenu() {
-  return <View style={styles.outerContainer}>
-    
-  </View>;
+  return <View style={styles.outerContainer}></View>;
 }
 
 export default MainMenu;

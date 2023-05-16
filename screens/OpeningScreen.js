@@ -1,10 +1,6 @@
 import { View, Text, ImageBackground, StyleSheet } from "react-native";
 import Button from "../components/UI/Button";
 
-// function enterApp(navigate){
-
-// }
-
 function OpeningScreen({ navigation, importedFont }) {
   return (
     <View style={styles.outerContainer}>
@@ -16,10 +12,10 @@ function OpeningScreen({ navigation, importedFont }) {
         <View style={styles.btnPosition}>
           <Button
             onPress={() => {
-              navigation.navigate("signup");
+              navigation.navigate("Login");
             }}
           >
-            <Text style={importedFont}>Sign Up!</Text>
+            <Text style={importedFont}>Enter!</Text>
           </Button>
         </View>
       </ImageBackground>

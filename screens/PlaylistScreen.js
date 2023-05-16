@@ -7,7 +7,9 @@ import {
 } from "react-native";
 import PlaylistBtn from "../components/UI/PlayListBtn";
 import { PLAYLISTS } from "../data/exercise-data";
-import Button from "../components/UI/Button";
+import Button from '../components/UI/Button';
+
+
 
 function PlaylistScreen({ navigation }) {
   function renderPlaylistTitle(itemData) {

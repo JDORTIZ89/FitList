@@ -60,8 +60,5 @@ const styles = StyleSheet.create({
     position: "absolute",
     margin: 5,
     bottom: 150,
-    shadowColor: 'black',
-    borderWidth: 8,
-    borderRadius: 10,
   },
 });

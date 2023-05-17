@@ -1,10 +1,11 @@
 import * as React from "react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useCallback } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
@@ -22,23 +23,53 @@ import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/styles";
 import AuthContextProvider, { AuthContext } from "./store/auth-context";
 
-import { View, Text } from "react";
+import { View, Text, Image } from "react";
+import Header from "./components/UI/Header";
+
+import {
+  useFonts,
+  BlackOpsOne_400Regular,
+} from "@expo-google-fonts/black-ops-one";
 
 const Stack = createStackNavigator();
+
+// function LogoTitle() {
+//   return (
+//     <Image
+//       style={{ width: 50, height: 50 }}
+//       source={require('./assets/icon.png')}
+//     />
+//   );
+// }
 
 function AuthStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
-        headerStyle: { backgroundColor: "Colors.primary500" },
+        headerStyle: { backgroundColor: Colors.primary500 },
         headerTintColor: "white",
         contentStyle: { backgroundColor: Colors.primary100 },
+        headerTitleStyle: {
+          fontFamily: 'BlackOpsOne_400Regular',
+          fontSize: 32,
+        }
       }}
     >
-      <Stack.Screen name="opening" component={OpeningScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen
+        name="Back"
+        component={OpeningScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUpScreen}
+        options={{ headerShown: true }}
+      />
     </Stack.Navigator>
   );
 }
@@ -46,14 +77,15 @@ function AuthenticatedStack() {
   const authCtx = useContext(AuthContext);
   return (
     <Stack.Navigator
+      initialRouteName="mainmenu"
       screenOptions={{
-        headerStyle: { backgroundColor: Colors.primary500 },
-        headerTintColor: "white",
-        contentStyle: { backgroundColor: "Colors.primary100" },
+        headerStyle: { backgroundColor: "transparent" },
+        headerTintColor: "black",
+        contentStyle: { backgroundColor: Colors.primary100 },
       }}
     >
       <Stack.Screen
-        name="LET'S GET FIT"
+        name="mainmenu"
         component={MainMenu}
         options={{
           headerRight: ({ tintColor }) => (
@@ -66,6 +98,11 @@ function AuthenticatedStack() {
               }}
             />
           ),
+          // header: (props)=> <Header></Header>
+          headerTitle: "",
+          headerStyle: {
+            height: 0,
+          },
         }}
       />
       <Stack.Screen name="generate" component={GenerateWorkoutScreen} />
@@ -107,13 +144,27 @@ function Root() {
   }, []);
 
   if (isTryingLogin) {
-    return <AppLoading />;
+    SplashScreen.preventAutoHideAsync();
+    setTimeout(SplashScreen.hideAsync, 2000);
   }
 
   return <Navigation />;
 }
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    BlackOpsOne_400Regular,
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       <StatusBar style="light" />

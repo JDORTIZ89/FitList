@@ -8,7 +8,7 @@ function IconButton({ icon, color, size, onPress, text }) {
       onPress={onPress}
     >
       <View style={styles.container}>
-        <Text style={styles.text}>logout</Text>
+        <Text style={color}>logout</Text>
         <Ionicons name={icon} color={color} size={size} />
       </View>
     </Pressable>
@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    position:'absolute',
+    top: -10,
+    right: 0,
   },
   text: {
     marginRight: 5,

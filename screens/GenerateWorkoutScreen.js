@@ -15,7 +15,7 @@ import Button from "../components/UI/Button";
 import { useState, useEffect } from "react";
 import { SelectList } from "react-native-dropdown-select-list";
 import { PrivateValueStore } from "@react-navigation/native";
-// import { BlackOpsOne_400Regular } from "@expo-google-fonts/black-ops-one";
+import { BlackOpsOne_400Regular } from "@expo-google-fonts/black-ops-one";
 
 function GenerateWorkoutScreen({ navigation, importedFont }) {
   const [selectedCategory, setSelectedCategory] = useState("");

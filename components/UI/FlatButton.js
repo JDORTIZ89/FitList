@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import { Colors } from "../../constants/styles";
+import { BlackOpsOne_400Regular } from "@expo-google-fonts/black-ops-one";
 
 function FlatButton({ children, onPress }) {
   return (
@@ -28,5 +29,6 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: "center",
     color: Colors.primary100,
+    fontFamily: 'BlackOpsOne_400Regular'
   },
 });

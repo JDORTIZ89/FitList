@@ -1,6 +1,7 @@
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
 import { Colors } from "../../constants/styles";
+import { BlackOpsOne_400Regular } from "@expo-google-fonts/black-ops-one";
 
 function Input({
   label,
@@ -37,6 +38,8 @@ const styles = StyleSheet.create({
   label: {
     color: "white",
     marginBottom: 4,
+    fontWeight: "bold",
+    fontFamily: "BlackOpsOne_400Regular",
   },
   labelInvalid: {
     color: Colors.error500,
@@ -44,9 +47,12 @@ const styles = StyleSheet.create({
   input: {
     paddingVertical: 8,
     paddingHorizontal: 6,
-    backgroundColor: Colors.primary100,
+    backgroundColor: "black",
+    color: "yellow",
     borderRadius: 4,
     fontSize: 16,
+    fontWeight: "bold",
+    fontFamily: "BlackOpsOne_400Regular",
   },
   inputInvalid: {
     backgroundColor: Colors.error100,

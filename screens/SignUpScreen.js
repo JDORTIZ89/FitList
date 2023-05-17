@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { createUser } from "../util/auth";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
-import { Alert } from "react-native";
+import { Alert, StyleSheet, View, Text, ImageBackground } from "react-native";
 import { AuthContext } from "../store/auth-context";
 import AuthContent from "../components/Auth/AuthContent";
 
@@ -27,7 +27,25 @@ function SignUpScreen() {
     return <LoadingOverlay message="Creating User..." />;
   }
 
-  return <AuthContent onAuthenticate={signupHandler} />;
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        style={styles.image}
+        source={require("./../components/UI/images/loginbackground.png")}
+      >
+        <AuthContent onAuthenticate={signupHandler} />
+      </ImageBackground>
+    </View>
+  );
 }
 
 export default SignUpScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+  },
+});

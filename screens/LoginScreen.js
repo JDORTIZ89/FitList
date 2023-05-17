@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import LoadingOverlay from "../components/UI/LoadingOverlay";
 import { AuthContext } from "../store/auth-context";
-import { View, Text, StyleSheet, Alert } from "react-native";
+import { View, Text, StyleSheet, Alert, ImageBackground } from "react-native";
 import { login } from "../util/auth";
 import AuthContent from "../components/Auth/AuthContent";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 function Login() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -26,18 +27,25 @@ function Login() {
   if (isAuthenticating) {
     return <LoadingOverlay message="Logging you in..." />;
   }
-  return <AuthContent isLogin={true} onAuthenticate={loginHandler} />;
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        style={styles.image}
+        source={require("./../components/UI/images/loginbackground.png")}
+      >
+      <AuthContent isLogin={true} onAuthenticate={loginHandler} />
+      </ImageBackground>
+    </View>
+  );
 }
 
 export default Login;
 
 const styles = StyleSheet.create({
-  test: {
+  container: {
     flex: 1,
-    color: "black",
-    backgroundColor: "blue",
-    fontSize: 40,
-    padding: 30,
-    margin: 10,
   },
+  image:{
+    flex:1,
+  }
 });

@@ -15,7 +15,7 @@ function OpeningScreen({ navigation, importedFont }) {
               navigation.navigate("Login");
             }}
           >
-            <Text style={importedFont}>Enter!</Text>
+            <Text style={styles.text}>Enter!</Text>
           </Button>
         </View>
       </ImageBackground>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   text: {
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: "bold",
     textAlign: "center",
     flexWrap: "wrap",
@@ -60,5 +60,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     margin: 5,
     bottom: 150,
+    shadowColor: 'black',
+    borderWidth: 8,
+    borderRadius: 10,
   },
 });
